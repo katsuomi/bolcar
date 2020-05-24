@@ -1,8 +1,7 @@
 class InstructorsController < UsersController
   def index
-    today_instructors = Schedule.today
-    instructors_id = today_instructors.map {|i| i.instructor_id }
-    @instructors = Instructor.active.find(instructors_id)
+    today_instructors = Schedule.today.map{|s| s.instructor_id }.uniq
+    @instructors = Instructor.active.find(today_instructors)
     @date = Date.today
   end
 
@@ -16,9 +15,8 @@ class InstructorsController < UsersController
   end
 
   def tomorrow
-    today_instructors = Schedule.tomorrow
-    instructors_id = today_instructors.map {|i| i.instructor_id }
-    @instructors = Instructor.active.find(instructors_id)
+    tomorrow_instructors = Schedule.tomorrow.map{|s| s.instructor_id }.uniq
+    @instructors = Instructor.active.find(tomorrow_instructors)
     @date = Date.tomorrow
     render "index"
   end
