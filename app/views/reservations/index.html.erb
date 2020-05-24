@@ -1,0 +1,33 @@
+<%= render "application/header" %>
+
+<div class="back-gray">
+  <h2>面談予定日時</h2>
+  <% @dates.each do |d| %>
+    <div class="day-schedule">
+      <%= d.strftime("%-m/%-d") %>
+      <div class="start-times">
+        <% @schedules.each do |s| %>
+          <% if s.date == d %>
+            <% if s.reservations.find{|r| r.course == "personal" } %>
+              <span class="personal-time"><%= s.start_time.strftime("%H:%M") %></span>
+            <% else %>
+              <span class="group-time"><%= s.start_time.strftime("%H:%M") %></span>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+
+  <% if @reservations.empty? %>
+    <p class="no-schedule">面談の予定はありません</p>
+  <% end %>
+
+  <div class="box-wrapper">
+    <div class="green-box"></div>
+    <p>個人面談</p>
+
+    <div class="red-box"></div>
+    <p>グループ面談</p>
+  </div>
+</div>

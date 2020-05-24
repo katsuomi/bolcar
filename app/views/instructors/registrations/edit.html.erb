@@ -1,0 +1,68 @@
+<h2>プロフィール編集</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= render "instructors/shared/error_messages", resource: resource %>
+  <p>プロフィール写真</p>
+  <%= f.label :icon, class: "image-label" do %>
+    <div class="prev-contents">
+      <% if current_instructor.icon.attached? %>
+        <div class="prev-content">
+          <%= image_tag current_instructor.icon, class: "prev-image" %>
+        </div>
+      <% else %>
+        <%= image_tag "camera.png", class: "default-icon" %>
+      <% end %>
+      <%= f.file_field :icon, accept: 'image/*', class: "hidden-file" %>
+    </div>
+  <% end %>
+  <div class="signup-field edit-field">
+    <%= f.label :name, "お名前(フルネーム)" %><br />
+    <%= f.text_field :name %>
+  </div>
+
+  <div class="signup-field edit-field">
+    <%= f.label :age %><br />
+    <%= f.select :age,
+      ["10代", "20代", "30代", "40代", "50代", "60代以上"],
+      {include_blank: "選択してください"}, class: "age-select" %>
+  </div>
+
+  <div class="signup-field edit-field">
+    <%= f.label :company %><br />
+    <%= f.text_field :company %>
+  </div>
+
+  <div class="check_field">
+    <label>
+      <%= f.check_box :is_public %>
+      企業名をプロフィールに表示する
+    </label>
+  </div>
+
+  <div class="signup-field edit-field">
+    <%= f.label :industry %><br />
+    <%= f.text_field :industry, placeholder: "金融・医療・製造業" %>
+  </div>
+
+  <div class="signup-field edit-field">
+    <%= f.label :occupation %><br />
+    <%= f.text_field :occupation, placeholder: "事務・経理・エンジニア" %>
+  </div>
+
+  <div class="signup-field edit-field">
+    <%= f.label :status, "あなたは..." %><br />
+    <%= f.select :status,
+      ["内定者", "社会人"],
+      {include_blank: "選択してください"}, class: "age-select" %>
+  </div>
+
+  <div class="signup-field edit-field">
+    <%= f.label :profile %><br />
+    <%= f.text_area :profile, rows: 10 %>
+  </div>
+
+
+  <div class="signup-actions">
+    <%= f.submit "保存する" %>
+  </div>
+<% end %>

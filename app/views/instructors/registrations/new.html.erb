@@ -1,0 +1,29 @@
+<h2 class="form-title">基本設定</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= render "instructors/shared/error_messages", resource: resource %>
+
+  <div class="signup-field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="signup-field">
+    <%= f.label :password %>
+    <% if @minimum_password_length %>
+    <span>(<%= @minimum_password_length %> 文字以上)</span>
+    <% end %><br />
+    <%= f.password_field :password, autocomplete: "new-password" %>
+  </div>
+
+  <div class="signup-field">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  </div>
+
+  <div class="signup-actions">
+    <%= f.submit "メールアドレスを認証　＞" %>
+  </div>
+
+  <%= link_to "メールが届かない場合", new_instructor_confirmation_path, class: "bottom-link" %>
+<% end %>

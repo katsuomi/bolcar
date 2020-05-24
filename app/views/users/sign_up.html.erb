@@ -1,0 +1,10 @@
+<div class="top">
+  <h3>会員登録</h3>
+  <%= link_to new_student_registration_path do %>
+    就活生の方
+  <% end %>
+  <%= link_to new_instructor_registration_path do %>
+    内定者・社会人の方
+  <% end %>
+  <%= link_to "登録済みの方はこちら", "/users/sign_in", class: "bottom-link" %>
+</div>

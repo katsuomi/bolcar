@@ -1,0 +1,29 @@
+<header>
+  <h3>Bolstering Career</h3>
+  <%= image_tag "menu.png", id: "menu-link" %>
+</header>
+<% if !current_student&.name && !current_instructor&.name %>
+  <div class="profile-alert">
+    <%= link_to_if current_student, "プロフィールを登録してください", edit_student_registration_path do %>
+    <% end %>
+    <%= link_to_if current_instructor, "プロフィールを登録してください", edit_instructor_registration_path do %>
+    <% end %>
+  </div>
+<% end %>
+<div id="close-menu">
+</div>
+<div id="menu">
+  <div class="menu-content">
+    <% if current_student %>
+      <%= link_to "講師を探す", instructors_path %>
+      <%= link_to "面談予定", reservations_path %>
+      <%= link_to "マイページ", student_path(current_student) %>
+      <%= link_to "ログアウト", destroy_student_session_path, method: :delete %>
+    <% end %>
+    <% if current_instructor %>
+      <%= link_to "シフト登録", new_schedule_path %>
+      <%= link_to "マイページ", instructor_path(current_instructor) %>
+      <%= link_to "ログアウト", destroy_instructor_session_path, method: :delete %>
+    <% end %>
+  </div>
+</div>

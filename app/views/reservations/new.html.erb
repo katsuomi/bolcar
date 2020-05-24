@@ -1,0 +1,29 @@
+<%= render "application/header" %>
+<div class="user-show">
+
+  <%= render @reservation.schedule.instructor %>
+
+  <div class="reservation-confirm">
+    <h3>実施日: <%= @reservation.schedule.date.strftime("%-m/%-d") %></h3>
+    <h3>
+      時間:
+      <%= @reservation.schedule.start_time.strftime("%-H:%M") + "~" +
+          @reservation.schedule.start_time.since(30.minutes).strftime("%-H:%M")%>
+    </h3>
+    <% case @reservation.course %>
+    <% when "personal" %>
+      <button class="personal">
+        個人面談
+      </button>
+    <% when "group" %>
+      <button class="group">
+        グループ面談
+      </button>
+    <% end %>
+    <div class="signup-actions">
+      <%= link_to "この面談を予約する",
+          {controller: "reservations", action: "create", course: @reservation.course},
+          method: :post %>
+    </div>
+  </div>
+</div>

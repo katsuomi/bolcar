@@ -1,0 +1,30 @@
+<%= render "application/header" %>
+<div class="back-gray">
+  <h2 class="search-title">シフト登録</h2>
+
+  <%= form_for(@schedule) do |f| %>
+    <% if @schedule.errors.any? %>
+      <div id="error_explanation">
+        <ul>
+          <% @schedule.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <%= f.label :date %>
+    <%= f.date_select :date, {use_month_numbers: true} %>
+
+    <%= f.label :start_time %>
+    <%= f.time_select :start_time, {minute_step: 30} %>
+  　<%= "から 30分間" %>
+
+    <div class="signup-actions">
+      <%= f.submit "登録する" %>
+    </div>
+
+  <% end %>
+  <div class="link-wrapper">
+    <%= link_to "登録したシフトの確認", schedules_path %> 
+  </div>
+</div>

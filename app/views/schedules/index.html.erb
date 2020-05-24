@@ -1,0 +1,19 @@
+<%= render "application/header" %>
+
+<div class="back-gray">
+  <h2 class="search-title">シフト確認</h2>
+
+  <%= render "schedules", schedules: @schedules, dates: @dates, type: "private" %>
+
+  <div class="box-wrapper">
+    <div class="green-box"></div>
+    <p>個人面談ですでに埋まっています</p>
+
+    <div class="red-box"></div>
+    <p>グループ面談ですでに埋まっています</p>
+  </div>
+
+  <div class="link-wrapper">
+    <%= link_to "新しくシフトを登録", new_schedule_path %>
+  </div>
+</div>

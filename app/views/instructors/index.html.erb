@@ -1,0 +1,33 @@
+<%= render "application/header" %>
+<div class="back-gray">
+  <div class="search-field">
+    <% if request.path == "/instructors" %>
+      <button class="today">
+        今日
+      </button>
+      <%= link_to tomorrow_instructors_path do %>
+        <button class="tomorrow">
+          明日
+        </button>
+      <% end %>
+    <% else %>
+      <%= link_to instructors_path do %>
+        <button class="today">
+          今日
+        </button>
+      <% end %>
+      <button class="tomorrow">
+        明日
+      </button>
+    <% end %>
+  </div>
+  <h2 class="search-title">講師を探す</h2>
+
+  <% @instructors.each do |i| %>
+    <%= render i %>
+  <% end %>
+
+  <% if @instructors.empty? %>
+    <h3>条件に該当する講師はいません<h3>
+  <% end %>
+</div>

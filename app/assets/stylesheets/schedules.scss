@@ -1,0 +1,173 @@
+// Place all the styles related to the schedules controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.new_schedule{
+  width: 85%;
+  margin: 0 auto;
+  label{
+    display: block;
+    text-align: left;
+    margin: 20px 0;
+  }
+  select{
+    background-color: #fff;
+    border: none;
+    font-size: 17px;
+    padding: 7px;
+  }
+  .field_with_errors{
+    display: inline;
+  }
+}
+
+.day-schedule{
+  background-color: #fff;
+  border-bottom: 1px solid #f2f2f2;
+  display: flex;
+  flex-flow: row nowrap;
+  font-size: 13px;
+  padding: 10px;
+}
+
+.start-times{
+  margin-left: 15px;
+  overflow-x: scroll;
+  display: flex;
+  flex-flow: row nowrap;
+  p{
+    font-size: 14px;
+    font-weight: bold;
+  }
+  a{
+    font-size: 16px;
+    font-weight: bold;
+    padding: 8px;
+    background-color: #f2f2f2;
+    border-radius: 5px;
+    margin-right: 8px;
+  }
+  span{
+    font-size: 16px;
+    font-weight: bold;
+    padding: 8px;
+    background-color: #f2f2f2;
+    border-radius: 5px;
+    margin-right: 8px;
+  }
+  .group-time{
+    color: #fff;
+    background-color: #d76050;
+  }
+  .personal-time{
+    color: #fff;
+    background-color: #4fab4d;
+  }
+}
+
+.start-times::-webkit-scrollbar {
+  display: none;
+}
+
+.no-schedule{
+  text-align: center;
+}
+
+.courses-wrapper{
+  display: flex;
+  justify-content: space-around;
+  button{
+    display: block;
+    font-size: 15px;
+    text-align: center;
+    padding: 15px 0;
+    width: 40%;
+    border-radius: 5px;
+    background-color: #fff;
+  }
+  .personal{
+    border: 2px solid #26a65c;
+  }
+  .group{
+    border: 2px solid #d76050;
+  }
+}
+
+.reservation-confirm{
+  margin-top: 30px;
+  h3{
+    font-size: 18px;
+    font-weight: normal;
+  }
+  button{
+    display: block;
+    font-size: 15px;
+    text-align: center;
+    padding: 15px 0;
+    width: 40%;
+    border-radius: 5px;
+    background-color: #fff;
+    margin: 0 auto;
+  }
+  .personal{
+    border: 2px solid #26a65c;
+  }
+  .group{
+    border: 2px solid #d76050;
+  }
+  a{
+    color: #fff;
+  }
+}
+
+.personal-course{
+  border: 2px solid #26a65c;
+  border-radius: 5px;
+  padding: 15px;
+  margin: 15px;
+  h3{
+    margin: 0 0 15px 0;
+    font-size: 18px;
+    text-align: left;
+    font-weight: normal;
+  }
+  p{
+    font-size: 14px;
+  }
+}
+
+.group-course{
+  border: 2px solid #d76050;
+  border-radius: 5px;
+  padding: 15px;
+  margin: 15px;
+  h3{
+    margin: 0 0 15px 0;
+    font-size: 18px;
+    text-align: left;
+    font-weight: normal;
+  }
+  p{
+    font-size: 14px;
+  }
+}
+
+.box-wrapper{
+  width: 85%;
+  margin: 30px auto;
+  .green-box{
+    width: 60px;
+    height: 30px;
+    border-radius: 5px;
+    background-color: #4fab4d;
+  }
+  .red-box{
+    width: 60px;
+    height: 30px;
+    border-radius: 5px;
+    background-color: #d76050;
+  }
+  p{
+    font-size: 14px;
+    margin: 10px 0;
+  }
+}

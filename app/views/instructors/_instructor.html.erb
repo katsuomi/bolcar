@@ -1,0 +1,38 @@
+<div class="user-info">
+  <%= link_to instructor_path(instructor) do %>
+    <% if instructor.icon.attached? %>
+      <%= image_tag instructor.icon %>
+    <% else %>
+      <%= image_tag "camera.png" %>
+    <% end %>
+    <div class="name-status">
+      <%= instructor.name %>
+      <% case instructor.status %>
+        <% when "内定者" %>
+          <span class="green-back"><%= instructor.status %></span>
+        <% when "社会人" %>
+          <span class="red-back"><%= instructor.status %></span>
+      <% end %>
+      <p>
+        <%=
+          "年齢: #{instructor.age}
+          #{instructor.industry}/#{instructor.occupation}
+          #{instructor.company if instructor.is_public}"
+          %>
+      </p>
+    </div>
+    <div class="profile">
+      <div>ひとこと</div>
+      <%= simple_format(instructor.profile) %>
+    </div>
+    <div class="start-times">
+      <% instructor.schedules.each do |s| %>
+        <% if s.date == @date && s.available?(1) %>
+          <span>
+            <%= s.start_time.strftime("%-H:%M") %>
+          </span>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
+</div>

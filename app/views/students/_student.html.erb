@@ -1,0 +1,24 @@
+<div class="user-info">
+  <%= link_to student_path(student) do %>
+    <% if student.icon.attached? %>
+      <%= image_tag student.icon %>
+    <% else %>
+      <%= image_tag "camera.png" %>
+    <% end %>
+    <div class="name-status">
+      <%= student.name %>
+      <span class="blue-back">学生</span>
+      <p>
+        <%=
+          "卒業年: #{student.graduation_year}
+          #{student.school if student.is_public}
+          #{student.faculty if student.is_public}"
+          %>
+      </p>
+    </div>
+    <div class="profile">
+      <div>ひとこと</div>
+      <%= simple_format(student.profile) %>
+    </div>
+  <% end %>
+</div>

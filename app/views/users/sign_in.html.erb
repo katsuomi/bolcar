@@ -1,0 +1,10 @@
+<div class="top">
+  <h3>ログイン</h3>
+  <%= link_to new_student_session_path do %>
+    就活生の方
+  <% end %>
+  <%= link_to new_instructor_session_path do %>
+    内定者・社会人の方
+  <% end %>
+  <%= link_to "無料会員登録はこちら", "/users/sign_up", class: "bottom-link" %>
+</div>

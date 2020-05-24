@@ -1,0 +1,17 @@
+<div class="top">
+  <h3>就活生ログイン</h3>
+
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="signin-field">
+      <%= f.email_field :email, autofocus: true, placeholder: "メールアドレス", autocomplete: "email" %>
+    </div>
+
+    <div class="signin-field">
+      <%= f.password_field :password, placeholder: "パスワード",　autocomplete: "current-password" %>
+    </div>
+
+    <div class="signin-actions">
+      <%= f.submit "ログイン" %>
+    </div>
+  <% end %>
+</div>

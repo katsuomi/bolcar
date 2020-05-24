@@ -1,0 +1,21 @@
+<%= render "application/header" %>
+<div class="user-show">
+
+  <%= render @schedule.instructor %>
+
+  <h3>コースを選択</h3>
+
+  <div class="courses-wrapper">
+    <button class="personal">
+      <%= link_to "個人面談", personal_schedule_reservations_path(@schedule) %>
+    </button>
+    <button class="group">
+      <%= link_to "グループ面談", group_schedule_reservations_path(@schedule) %>
+    </button>
+  </div>
+
+  <div class="bottom-link">
+    <%= link_to "コースについて詳しくみる", courses_schedules_path %>
+  </div>
+
+</div>

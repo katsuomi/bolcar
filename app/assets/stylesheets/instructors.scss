@@ -1,0 +1,31 @@
+// Place all the styles related to the instructors controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.search-field{
+  background-color: #fff;
+  padding: 20px;
+  text-align: center;
+  button{
+    color: #fff;
+    background-color: #49669f;
+    font-size: 14px;
+    padding: 7px 15px;
+    border: none;
+  }
+  a{
+    button{
+      color: #fff;
+      background-color: #c4cbdc;
+      border-radius: 10px;
+      font-size: 14px;
+      padding: 7px 15px;
+      border: none;
+    }
+  }
+  .today{
+    border-radius: 10px 0 0 10px;
+  }
+  .tomorrow{
+    border-radius: 0 10px 10px 0;
+  }
+}

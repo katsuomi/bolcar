@@ -1,0 +1,276 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.top{
+  background: linear-gradient(154.94deg, #5273B4 1.01%, #56CBB6 100%);
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  font-size: 18px;
+  h3{
+    margin: 0;
+    margin-top: 156px;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #fff;
+  }
+  a{
+    display: block;
+    width: 75%;
+    margin: 20px auto;
+    background-color: #fff;
+    color: #373737;
+    padding: 14px;
+    text-align: center;
+    border-radius: 5px;
+  }
+  .bottom-link{
+    display: block;
+    width: 80%;
+    margin: 20px auto;
+    font-size: 13px;
+    background: none;
+    text-align: right;
+  }
+}
+
+.bottom-link{
+  display: block;
+  width: 80%;
+  margin: 20px auto;
+  font-size: 13px;
+  background: none;
+  text-align: right;
+  a{
+    color: #373737;
+  }
+}
+
+.form-title{
+  margin: 50px;
+  padding: 0;
+}
+
+.signup-field{
+  width: 80%;
+  margin: 20px auto;
+  font-size: 14px;
+  color: #373737;
+  label{
+    padding: 0 5px;
+  }
+  input{
+    background-color: #f2f2f2;
+    padding: 13px;
+    border-radius: 5px;
+    font-size: 18px;
+    width: 90%;
+    margin: 0 auto;
+    border: none;
+  }
+}
+
+.signup-actions{
+  width: 75%;
+  margin: 50px auto;
+  font-size: 18px;
+  background: linear-gradient(154.94deg, #5273B4 1.01%, #56CBB6 100%);
+  border-radius: 5px;
+  padding: 10px;
+  text-align: center;
+  input{
+    color: #fff;
+    font-size: 15px;
+  }
+}
+
+#error_explanation{
+  font-size: 13px;
+  color: #d76050;
+}
+
+.signin-field{
+  width: 80%;
+  margin: 5px auto;
+  input{
+    width: 90%;
+    font-size: 18px;
+    padding: 13px;
+    border-radius: 5px;
+    border: none;
+  }
+}
+
+.signin-actions{
+  width: 60%;
+  margin: 50px auto;
+  background-color: #fff;
+  font-size: 18px;
+  border-radius: 25px;
+  padding: 10px;
+  text-align: center;
+  input{
+    color: #373737;
+    background: linear-gradient(154.94deg, #5273B4 1.01%, #56CBB6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: bold;
+    font-size: 20px;
+    border: none;
+    width: 90%;
+  }
+}
+
+.notice{
+  text-align: center;
+  background: #49669f;
+  color: #fff;
+}
+
+.alert{
+  text-align: center;
+  background-color: #d76050;
+  color: #fff;
+}
+
+.edit_instructor, .edit_student{
+  width: 90%;
+  margin: 0 auto;
+  .prev-contents{
+    text-align: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 5px;
+    margin: 30px auto;
+    background-color: #ccc;
+    opacity: 0.5;
+    .default-icon{
+      width: 30px;
+      height: auto;
+      margin-top: 13px;
+    }
+    .prev-image{
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 5px;
+    }
+    .hidden-file{
+      display: none;
+    }
+  }
+}
+
+h2{
+  width: 90%;
+  margin: 50px auto;
+}
+
+.edit-field{
+  width: 100%;
+  textarea{
+    width: 100%;
+    background-color: #f2f2f2;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+}
+
+.age-select{
+  font-size: 15px;
+  background-color: #f2f2f2;
+  border: none;
+  padding: 10px;
+  color: #373737;
+}
+
+.check_field{
+  font-size: 13px;
+}
+
+.user-info{
+  a{
+    display: block;
+    color: #373737;
+    width: 90%;
+    margin: 20px auto;
+    padding-bottom: 10px;
+    position: relative;
+    background-color: #fff;
+    min-height: 80px;
+    border-radius: 10px;
+    img{
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      width: 50px;
+      height: 50px;
+      object-fit: cover;
+      border-radius: 5px;
+    }
+    .name-status{
+      display: inline-block;
+      margin-left: 80px;
+      font-size: 18px;
+      padding-top: 15px;
+      font-weight: bold;
+      span{
+        font-size: 12px;
+        font-weight: normal;
+        color: #fff;
+        padding: 3px;
+        border-radius: 3px;
+        margin-left: 20px;
+      }
+      .green-back{
+        background-color: #4fab4d;
+      }
+      .red-back{
+        background-color: #d76050;
+      }
+      .blue-back{
+        background-color: #49669f;
+      }
+      p{
+        font-size: 12px;
+        color: #828284;
+        font-weight: normal;
+      }
+    }
+    .profile{
+      margin: 20px 10px;
+      font-size: 12px;
+      div{
+        font-weight: bold;
+      }
+      p{
+        color: #828284;
+      }
+    }
+  }
+}
+
+.user-show{
+  background-color: #f2f2f2;
+  min-height: 100vh;
+  padding-top: 30px;
+  h3{
+    text-align: center;
+  }
+}
+
+.link-wrapper{
+  a{
+    color: #373737;
+    font-size: 17px;
+  }
+  padding: 30px 0;
+  text-align: center;
+}
+
+.search-title{
+  margin: 0;
+  text-align: center;
+  padding: 20px;
+}

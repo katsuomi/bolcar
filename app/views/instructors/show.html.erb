@@ -1,0 +1,21 @@
+<%= render "application/header" %>
+<div class="user-show">
+
+  <%= render @instructor %>
+
+  <h3>予約可能日時</h3>
+  <%= render "schedules/schedules", schedules: @schedules, dates: @dates, type: "public" %>
+
+  <div class="box-wrapper"> 
+    <div class="green-box"></div>
+    <p>個人面談ですでに埋まっています</p>
+
+    <div class="red-box"></div>
+    <p>グループ面談ですでに埋まっています</p>
+  </div>
+
+  <div class="link-wrapper">
+    <%= link_to_if @instructor.id == current_instructor&.id, "マイページを編集", edit_instructor_registration_path do %>
+    <% end %>
+  </div>
+</div>

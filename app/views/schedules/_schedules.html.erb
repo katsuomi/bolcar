@@ -1,0 +1,39 @@
+<% dates.each do |d| %>
+  <div class="day-schedule">
+    <%= d.date.strftime("%-m/%-d") %>
+    <div class="start-times">
+      <% schedules.each do |s| %>
+        <% if s.date == d.date %>
+            <% if type == "private" %>
+              <% if s.reservations.find{|r| r.course == "personal" } %>
+                <span class="personal-time"><%= s.start_time.strftime("%H:%M") %></span>
+              <% elsif s.reservations.find{|r| r.course == "group" } %>
+                <span class="group-time"><%= s.start_time.strftime("%H:%M") %></span>
+              <% else %>
+                <%=
+                  link_to s.start_time.strftime("%H:%M"), schedule_path(s.id),
+                  {method: :delete, data: {confirm: "このシフトを削除しますか？"}}
+                  %>
+              <% end %>
+            <% else %>
+              <% if s.reservations.find{|r| r.course == "personal" } %>
+                <span class="personal-time"><%= s.start_time.strftime("%H:%M") %></span>
+              <% elsif s.reservations.find{|r| r.course == "group" } %>
+                <span class="group-time"><%= s.start_time.strftime("%H:%M") %></span>
+              <% else %>
+                <% if current_student %>
+                  <%= link_to s.start_time.strftime("%H:%M"), schedule_path(s) %>
+                <% else %>
+                  <span><%= s.start_time.strftime("%H:%M") %></span>
+                <% end %>
+              <% end %>
+            <% end %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
+<% if dates.empty? %>
+  <p class="no-schedule">シフトが登録されていません</p>
+<% end %>
