@@ -6,7 +6,7 @@ class Schedule < ApplicationRecord
   validates :start_time, presence: true, uniqueness: { scope: :date, message: "が既存のシフトと重複しています" }
   validate :date_not_before_today
 
-  default_scope {where("date >= ?", Date.today).order(:date, :start_time)}
+  default_scope {where("date >= ?", Date.today).order(:date, :start_time, :instructor_id)}
 
   scope :dates, -> {select(:date).distinct.order(:date)}
   scope :today, -> {where(date: Date.today).select(:instructor_id).distinct}
