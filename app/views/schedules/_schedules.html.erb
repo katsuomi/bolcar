@@ -1,9 +1,9 @@
 <% dates.each do |d| %>
   <div class="day-schedule">
-    <%= d.date.strftime("%-m/%-d") %>
+    <%= d.strftime("%-m/%-d") %>
     <div class="start-times">
       <% schedules.each do |s| %>
-        <% if s.date == d.date %>
+        <% if s.date == d %>
             <% if type == "private" %>
               <% if s.reservations.find{|r| r.course == "personal" } %>
                 <span class="personal-time"><%= s.start_time.strftime("%H:%M") %></span>

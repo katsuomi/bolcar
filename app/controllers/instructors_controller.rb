@@ -11,7 +11,7 @@ class InstructorsController < UsersController
     end
     @instructor = Instructor.find(params[:id])
     @schedules = @instructor.schedules.order(:date, :start_time)
-    @dates = @schedules.dates
+    @dates = @schedules.map{|s| s.date }.uniq
   end
 
   def tomorrow

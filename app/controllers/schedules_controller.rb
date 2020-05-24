@@ -3,7 +3,7 @@ class SchedulesController < ApplicationController
 
   def index
     @schedules = current_instructor.schedules
-    @dates = @schedules.dates
+    @dates = @schedules.map{|s| s.date }.uniq
   end
 
   def show
