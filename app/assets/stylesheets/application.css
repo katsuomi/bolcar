@@ -21,6 +21,11 @@ html, body{
   overflow-x: hidden;
 }
 
+body {
+  position: relative;
+  overflow-x: hidden;
+}
+
 p{
   margin: 0;
   padding: 0;
