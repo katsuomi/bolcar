@@ -1,0 +1,16 @@
+<div class="meeting">
+  <p>
+    日時:
+    <%= meeting.schedule.date.strftime("%-m/%-d") %>
+    <%= meeting.schedule.start_time.strftime("%-H:%M") + "~" + meeting.schedule.start_time.since(30.minutes).strftime("%-H:%M") %>
+    <% case meeting.schedule.reservations.first.course %>
+      <% when "personal" %>
+        個人
+      <% when "group" %>
+        グループ
+    <% end %>
+  </p>
+  <p>サービス名: <%= meeting.service_name %></p>
+  <p>ミーティングID: <%= meeting.service_id %></p>
+  <p>パスワード: <%= meeting.service_pwd %></p>
+</div>

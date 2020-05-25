@@ -27,10 +27,16 @@
     </div>
     <div class="start-times">
       <% instructor.schedules.each do |s| %>
-        <% if s.date == @date && s.available?(1) %>
-          <span>
-            <%= s.start_time.strftime("%-H:%M") %>
-          </span>
+        <% if s.date == @date %>
+          <% if s.reservations.find{|r| r.course == "group" } && s.available?(5) %>
+            <span class="group-time">
+              <%= s.start_time.strftime("%-H:%M") %>
+            </span>
+          <% elsif s.reservations.empty? %>
+            <span>
+              <%= s.start_time.strftime("%-H:%M") %>
+            </span>
+          <% end %>
         <% end %>
       <% end %>
     </div>

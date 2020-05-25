@@ -1,14 +1,14 @@
 class Schedule < ApplicationRecord
   belongs_to :instructor
-  has_many :reservations
+  has_many :reservations, dependent: :destroy
+  has_one :meeting, dependent: :destroy
 
   validates :date, presence: true
   validates :start_time, presence: true, uniqueness: { scope: :date, message: "が既存のシフトと重複しています" }
   validate :date_not_before_today
 
-  default_scope {where("date >= ?", Date.today).order(:date, :start_time)}
+  #default_scope {where("date >= ?", Date.today).order(:date, :start_time)}
 
-  scope :dates, -> {select(:date).distinct.order(:date)}
   scope :today, -> {where(date: Date.today)}
   scope :tomorrow, -> {where(date: Date.tomorrow)}
 

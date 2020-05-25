@@ -33,6 +33,11 @@ ja:
       schedule:
         date: 実施日
         start_time: 開始時間
+      meeting:
+        service_name: "サービス名"
+        service_id: "ミーティングID"
+        service_pwd: "パスワード"
+        
 
   date:
     abbr_day_names:

@@ -4,7 +4,7 @@
   <%= render @student %>
 
   <div class="link-wrapper">
-    <%= link_to_if @student.id == current_student.id, "マイページを編集", edit_student_registration_path do %>
+    <%= link_to_if @student.id == current_student&.id, "マイページを編集", edit_student_registration_path do %>
     <% end %>
   </div>
 </div>

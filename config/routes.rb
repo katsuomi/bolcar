@@ -28,9 +28,11 @@ Rails.application.routes.draw do
         get :group
       end
     end
+    resources :meetings, only: [:new, :create]
   end
 
   resources :reservations
+  resources :meetings
 
 
   root "users#sign_up"

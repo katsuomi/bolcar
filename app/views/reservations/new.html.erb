@@ -19,6 +19,10 @@
       <button class="group">
         グループ面談
       </button>
+      <h3>
+        すでに<span><%= @reservation.schedule.reservations.count %>人</span>が参加しています
+      </h3>
+      <p>※グループの参加者があなた一人の場合、個人面談に切り替わります</p>
     <% end %>
     <div class="signup-actions">
       <%= link_to "この面談を予約する",

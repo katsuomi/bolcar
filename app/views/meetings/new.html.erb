@@ -1,0 +1,47 @@
+<div class="back-gray">
+  <p class="meeting-form-introduction">
+    <%= link_to "#{@student.name}さん", @student %>から面談の申込がありました<br/>
+    以下のフォームに回答してください
+  </p>
+  <p class="meeting-label">日時</p>
+  <p class="meeting-datetime">
+    <%= @schedule.date.strftime("%-m/%-d") %>
+    <%= @schedule.start_time.strftime("%-H:%M") + "~" + @schedule.start_time.since(30.minutes).strftime("%-H:%M") %>
+    <% case @course %>
+      <% when "personal" %>
+        個人
+      <% when "group" %>
+        グループ
+    <% end %>
+  </p>
+  <%= form_for [@schedule, @meeting] do |f| %>
+    <% if @meeting.errors.any? %>
+      <div id="error_explanation">
+        <ul>
+          <% @meeting.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+    <div class="signup-field meeting-field">
+      <%= f.label :service_name %><br />
+      <%= f.text_field :service_name %>
+    </div>
+
+    <div class="signup-field meeting-field">
+      <%= f.label :service_id %><br />
+      <%= f.text_field :service_id %>
+    </div>
+
+    <div class="signup-field meeting-field">
+      <%= f.label :service_pwd %><br />
+      <%= f.text_field :service_pwd %>
+    </div>
+
+    <div class="signup-actions">
+      <%= f.submit "フォームを送信" %>
+    </div>
+
+  <% end %>
+</div>

@@ -53,6 +53,12 @@
     background-color: #f2f2f2;
     border-radius: 5px;
     margin-right: 8px;
+    a{
+      color: #fff;
+      background-color: #d76050;
+      padding: 0;
+      margin: 0;
+    }
   }
   .group-time{
     color: #fff;
@@ -61,6 +67,14 @@
   .personal-time{
     color: #fff;
     background-color: #4fab4d;
+  }
+  .reserved-time{
+    color: #fff;
+    background-color: #49669f;
+    a{
+      color: #fff;
+      background-color: #49669f;
+    }
   }
 }
 
@@ -97,6 +111,15 @@
   h3{
     font-size: 18px;
     font-weight: normal;
+    span{
+      color: #d76050;
+      font-weight: bold;
+    }
+  }
+  p{
+    font-size: 13px;
+    width: 80%;
+    margin: 0 auto;
   }
   button{
     display: block;
@@ -165,6 +188,12 @@
     height: 30px;
     border-radius: 5px;
     background-color: #d76050;
+  }
+  .blue-box{
+    width: 60px;
+    height: 30px;
+    border-radius: 5px;
+    background-color: #49669f;
   }
   p{
     font-size: 14px;

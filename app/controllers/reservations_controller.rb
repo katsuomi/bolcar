@@ -14,6 +14,10 @@ class ReservationsController < ApplicationController
                     student_id: current_student.id,
                     course: "personal"
                   )
+    if @reservation.check_deadline
+      redirect_to_schedule(@reservation)
+      return
+    end
     render "new"
   end
 
@@ -22,18 +26,32 @@ class ReservationsController < ApplicationController
                     student_id: current_student.id,
                     course: "group"
                   )
+    if @reservation.check_deadline
+      redirect_to_schedule(@reservation)
+      return
+    end
     render "new"
   end
 
   def create
     @schedule = Schedule.find(params[:schedule_id])
-    if @schedule.available?(1)
+    case params[:course]
+      when "personal"
+        max = 1
+      when "group"
+        max = 5
+    end
+    if @schedule.available?(max)
       @reservation = @schedule.reservations.build(
                       student_id: current_student.id,
                       course: params[:course]
                     )
-      @reservation.save
-      redirect_to instructors_path, notice: "予約が完了しました"
+      if @reservation.save
+        ReservationMailer.send_reservation_notification(@schedule.instructor).deliver_later
+        redirect_to instructors_path, notice: "予約が完了しました"
+      else
+        redirect_to instructors_path, alert: "すでに予約済みです"
+      end
     else
       redirect_to instructors_path, alert: "すでに予約が埋まっています"
     end
@@ -45,4 +63,9 @@ class ReservationsController < ApplicationController
       redirect_to edit_student_registration_path, alert: "プロフィール登録をしてください"
     end
   end
+
+  def redirect_to_schedule(reservation)
+    redirect_to instructor_path(reservation.schedule.instructor), alert: "予約の締め切り時刻を過ぎています"
+  end
+
 end

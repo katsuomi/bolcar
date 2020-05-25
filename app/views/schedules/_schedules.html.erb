@@ -5,7 +5,9 @@
       <% schedules.each do |s| %>
         <% if s.date == d %>
             <% if type == "private" %>
-              <% if s.reservations.find{|r| r.course == "personal" } %>
+              <% if !s.reservations.empty? && !s.meeting %>
+                <span class="reserved-time"><%= link_to s.start_time.strftime("%H:%M"), new_schedule_meeting_path(s) %></span>
+              <% elsif s.reservations.find{|r| r.course == "personal" } %>
                 <span class="personal-time"><%= s.start_time.strftime("%H:%M") %></span>
               <% elsif s.reservations.find{|r| r.course == "group" } %>
                 <span class="group-time"><%= s.start_time.strftime("%H:%M") %></span>
@@ -17,9 +19,13 @@
               <% end %>
             <% else %>
               <% if s.reservations.find{|r| r.course == "personal" } %>
-                <span class="personal-time"><%= s.start_time.strftime("%H:%M") %></span>
+                <span class="personal-time">
+                  <%= s.start_time.strftime("%H:%M") %>
+                </span>
               <% elsif s.reservations.find{|r| r.course == "group" } %>
-                <span class="group-time"><%= s.start_time.strftime("%H:%M") %></span>
+                <span class="group-time">
+                  <%= link_to_if current_student, s.start_time.strftime("%H:%M"), group_schedule_reservations_path(s) %>
+                </span>
               <% else %>
                 <% if current_student %>
                   <%= link_to s.start_time.strftime("%H:%M"), schedule_path(s) %>

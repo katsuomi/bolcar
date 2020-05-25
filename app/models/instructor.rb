@@ -15,4 +15,9 @@ class Instructor < ApplicationRecord
   validates :occupation, presence: true, on: :update
 
   scope :active, -> {where.not(name: nil)}
+
+  def reserved_meetings
+    self.schedules.select{|s| !s.reservations.empty? }
+  end
+
 end

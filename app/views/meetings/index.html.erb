@@ -1,0 +1,15 @@
+<%= render "application/header" %>
+
+<div class="back-gray">
+
+  <h2>面談情報</h2>
+
+  <% @meetings.each do |meeting| %>
+    <%= render meeting %>
+  <% end %>
+
+  <% if @meetings.empty? %>
+    <p>確定している面談情報はありません</p>
+  <% end %>
+
+</div>

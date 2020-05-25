@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_24_080031) do
+ActiveRecord::Schema.define(version: 2020_05_25_112203) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -55,6 +55,16 @@ ActiveRecord::Schema.define(version: 2020_05_24_080031) do
     t.string "status"
     t.index ["email"], name: "index_instructors_on_email", unique: true
     t.index ["reset_password_token"], name: "index_instructors_on_reset_password_token", unique: true
+  end
+
+  create_table "meetings", force: :cascade do |t|
+    t.integer "schedule_id"
+    t.string "service_name", null: false
+    t.string "service_id"
+    t.string "service_pwd"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["schedule_id"], name: "index_meetings_on_schedule_id"
   end
 
   create_table "reservations", force: :cascade do |t|
