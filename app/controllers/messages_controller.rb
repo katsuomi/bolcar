@@ -1,10 +1,6 @@
 class MessagesController < ApplicationController
   before_action :authenticate_user!
 
-  def index
-    @meeting = Meeting.find(params[:meeting_id])
-    redirect_to @meeting
-  end
 
   def create
     @meeting = Meeting.find(params[:meeting_id])

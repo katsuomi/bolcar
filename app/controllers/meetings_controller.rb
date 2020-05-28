@@ -49,7 +49,11 @@ class MeetingsController < ApplicationController
   end
 
   def redirect_to_schedules
-    redirect_to meetings_path, alert: "この面談はすでに終了しています" if !@meeting.schedule
+    if !@meeting.schedule
+      redirect_to meetings_path, alert: "この面談はすでに終了しています"
+    elsif @meeting.instructor != current_instructor && !@meeting.students.find{|s| s == current_student}
+      redirect_to meetings_path, alert: "不正なアクセスです"
+    end
   end
 
 end
