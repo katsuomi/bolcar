@@ -13,7 +13,7 @@ class Reservation < ApplicationRecord
 
   private
   def check_double_booking
-     if Student.find(student_id).reservations.find{|r| r.schedule&.date == Schedule.find(schedule_id).date }
+     if Student.find(student_id).reservations.find{|r| r.schedule&.date == Schedule.find(schedule_id).date && r.schedule&.start_time == Schedule.find(schedule_id).start_time }
        errors.add(:base, "")
      end
   end
