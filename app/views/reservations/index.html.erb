@@ -1,7 +1,8 @@
 <%= render "application/header" %>
 
 <div class="back-gray">
-  <h2>面談予定日時</h2>
+  <h2>予約中の面談</h2>
+  <p class="align-center">面談の詳細情報は講師から送信されるフォームをご確認ください</p>
   <% @dates.each do |d| %>
     <div class="day-schedule">
       <%= d.strftime("%-m/%-d") %>

@@ -4,8 +4,8 @@ class ReservationsController < ApplicationController
 
   def index
     @reservations = Reservation.my_reservation(current_student.id)
-    schedules_id = @reservations.map{|r| r.schedule.id }
-    @schedules = Schedule.find(schedules_id)
+    schedules = @reservations.map{|r| r.schedule }
+    @schedules = available_schedule(schedules)
     @dates = @schedules.map{|s| s.date }.uniq
   end
 
@@ -47,10 +47,10 @@ class ReservationsController < ApplicationController
                       course: params[:course]
                     )
       if @reservation.save
-        ReservationMailer.send_reservation_notification(@schedule.instructor).deliver_later
+        ReservationMailer.send_reservation_notification(@schedule.instructor).deliver_later if !@schedule.meeting
         redirect_to instructors_path, notice: "予約が完了しました"
       else
-        redirect_to instructors_path, alert: "すでに予約済みです"
+        redirect_to instructors_path, alert: "指定した日時はすでに予約済みです"
       end
     else
       redirect_to instructors_path, alert: "すでに予約が埋まっています"

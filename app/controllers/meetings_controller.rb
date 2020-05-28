@@ -1,15 +1,25 @@
 class MeetingsController < ApplicationController
-  before_action :authenticate_instructor!, except: :index
+  before_action :authenticate_instructor!, except: [:index, :show]
   before_action :authenticate_user!
 
   def index
     if current_student
-      @schedules = current_student.reservations.map{|r| r.schedule }
+      schedules = current_student.reservations.map{|r| r.schedule }
+      @schedules = available_schedule(schedules)
       @meetings = @schedules.select{|s| s.meeting }.map{|s| s.meeting }
     else
-      @schedules = current_instructor.schedules
+      schedules = current_instructor.schedules
+      @schedules = available_schedule(schedules)
       @meetings = @schedules.select{|s| s.meeting }.map{|s| s.meeting }
     end
+  end
+
+  def show
+    @meeting = Meeting.find(params[:id])
+    @messages = @meeting.messages
+    @message = @meeting.messages.build(student_id: current_student.id) if current_student
+    @message = @meeting.messages.build(instructor_id: current_instructor.id) if current_instructor
+    redirect_to_schedules
   end
 
   def new
@@ -17,6 +27,7 @@ class MeetingsController < ApplicationController
     @student = @schedule.reservations.first.student
     @course = @schedule.reservations.first.course
     @meeting = @schedule.build_meeting
+    redirect_to_schedules
   end
 
   def create
@@ -35,6 +46,10 @@ class MeetingsController < ApplicationController
   private
   def meeting_params
     params.require(:meeting).permit(:service_name, :service_id, :service_pwd)
+  end
+
+  def redirect_to_schedules
+    redirect_to meetings_path, alert: "この面談はすでに終了しています" if !@meeting.schedule
   end
 
 end

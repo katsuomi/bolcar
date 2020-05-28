@@ -16,13 +16,14 @@
   <div class="menu-content">
     <% if current_student %>
       <%= link_to "講師を探す", instructors_path %>
-      <%= link_to "面談予定", reservations_path %>
+      <%= link_to "予約中の面談", reservations_path %>
       <%= link_to "面談情報", meetings_path %>
       <%= link_to "マイページ", student_path(current_student) %>
       <%= link_to "ログアウト", destroy_student_session_path, method: :delete %>
     <% end %>
     <% if current_instructor %>
       <%= link_to "シフト登録", new_schedule_path %>
+      <%= link_to "シフト確認", schedules_path %>
       <%= link_to "面談情報", meetings_path %>
       <%= link_to "マイページ", instructor_path(current_instructor) %>
       <%= link_to "ログアウト", destroy_instructor_session_path, method: :delete %>

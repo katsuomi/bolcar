@@ -1,0 +1,18 @@
+<%= render "application/header" %>
+<div class="back-gray">
+  <%= render @meeting %>
+
+  <div class="messages" id="messages">
+    <%= render partial: 'messages/messages', locals: { messages: @messages} %>
+  </div>
+
+  <div class="new-message">
+    <%= form_for [@meeting, @message], remote: true do |f| %>
+      <div id="message-error">
+        <%= render partial: 'messages/message_error', locals: { message: @message} %>
+      </div>
+      <%= f.text_area :content, placeholder: "何かわからないことがあれば質問してみましょう", id: "message-input" %>
+      <%= f.submit "メッセージを送信" %>
+    <% end %>
+  </div>
+</div>

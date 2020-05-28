@@ -1,13 +1,23 @@
 <div class="meeting">
   <p>
+    <% if current_student %>
+      講師: <%= link_to "#{meeting.instructor.name}さん", meeting.instructor  %>
+    <% else %>
+      生徒:
+      <% meeting.students.each do |student| %>
+        <%= link_to "#{student.name}さん", student %>
+      <% end %>
+    <% end %>
+  </p>
+  <p>
     日時:
     <%= meeting.schedule.date.strftime("%-m/%-d") %>
     <%= meeting.schedule.start_time.strftime("%-H:%M") + "~" + meeting.schedule.start_time.since(30.minutes).strftime("%-H:%M") %>
-    <% case meeting.schedule.reservations.first.course %>
+    <% case meeting.course %>
       <% when "personal" %>
-        個人
+        <span>個人</span>
       <% when "group" %>
-        グループ
+        <span>グループ</span>
     <% end %>
   </p>
   <p>サービス名: <%= meeting.service_name %></p>

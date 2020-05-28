@@ -1,0 +1,23 @@
+<% messages.each do |message| %>
+  <% if message.content %>
+    <% if message.sender == current_student || message.sender == current_instructor %>
+      <div class="my-message">
+        <%= image_tag message.sender.icon if message.sender.icon.attached? %>
+        <%= image_tag "icon" if !message.sender.icon.attached? %>
+        <div class="message-content">
+          <p class="message-sender"><%= message.sender.name %></p>
+          <p><%= message.content %></p>
+        </div>
+      </div>
+    <% else %>
+      <div class="message">
+        <%= image_tag message.sender.icon if message.sender.icon.attached? %>
+        <%= image_tag "icon" if !message.sender.icon.attached? %>
+        <div class="message-content">
+          <p class="message-sender"><%= message.sender.name %></p>
+          <p><%= message.content %></p>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>

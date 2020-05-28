@@ -32,7 +32,9 @@ Rails.application.routes.draw do
   end
 
   resources :reservations
-  resources :meetings
+  resources :meetings do
+    resources :messages
+  end
 
 
   root "users#sign_up"

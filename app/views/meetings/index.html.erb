@@ -6,6 +6,7 @@
 
   <% @meetings.each do |meeting| %>
     <%= render meeting %>
+    <%= link_to "トークルーム", meeting, class: "messages-link" %>
   <% end %>
 
   <% if @meetings.empty? %>

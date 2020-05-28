@@ -18,4 +18,8 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def available_schedule(schedules)
+    return schedules.select{|s| s }
+  end
+
 end

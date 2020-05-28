@@ -5,7 +5,7 @@ class Instructor < ApplicationRecord
          :recoverable, :rememberable, :validatable, :confirmable
 
   has_one_attached :icon
-  has_many :schedules
+  has_many :schedules, dependent: :destroy
 
   validates :name, presence: true, length: {maximum: 20}, on: :update
   validates :age, presence: true, on: :update
@@ -15,9 +15,5 @@ class Instructor < ApplicationRecord
   validates :occupation, presence: true, on: :update
 
   scope :active, -> {where.not(name: nil)}
-
-  def reserved_meetings
-    self.schedules.select{|s| !s.reservations.empty? }
-  end
 
 end

@@ -5,7 +5,7 @@ class Student < ApplicationRecord
          :recoverable, :rememberable, :validatable, :confirmable
 
   has_one_attached :icon
-  has_many :reservations
+  has_many :reservations, dependent: :destroy
 
   validates :name, presence: true, length: {maximum: 20}, on: :update
   validates :profile, presence: true, length: {maximum: 300}, on: :update
