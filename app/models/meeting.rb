@@ -20,7 +20,7 @@ class Meeting < ApplicationRecord
 
   private
   def check_start_time
-    if Schedule.find(schedule_id).date == Date.today && Schedule.find(schedule_id).start_time < Time.current
+    if Schedule.find(schedule_id).date == Date.today && Schedule.find(schedule_id).start_time.strftime("%H%M") < Time.current.strftime("%H%M")
       errors.add(:base, "この予約はすでに無効です")
     end
   end
