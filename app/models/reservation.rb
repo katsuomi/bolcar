@@ -8,7 +8,7 @@ class Reservation < ApplicationRecord
   validate :check_double_booking
 
   def check_deadline
-    self.schedule.date < Date.today || (self.schedule.date == Date.today && self.schedule.start_time.strftime("%H%M") < Time.current.since(3.hours).strftime("%H%M"))
+    self.schedule.date < Date.today || self.schedule.date == Date.today && self.schedule.start_time.strftime("%-H%M").to_i < Time.current.strftime("%-H%M").to_i + 300
   end
 
   private
