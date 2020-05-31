@@ -10,9 +10,9 @@
         <% @schedules.each do |s| %>
           <% if s.date == d %>
             <% if s.reservations.find{|r| r.course == "personal" } %>
-              <span class="personal-time"><%= s.start_time.strftime("%H:%M") %></span>
+              <span class="personal-time"><%= link_to s.start_time.strftime("%H:%M"), meetings_path %></span>
             <% else %>
-              <span class="group-time"><%= s.start_time.strftime("%H:%M") %></span>
+              <span class="group-time"><%= link_to s.start_time.strftime("%H:%M"), meetings_path %></span>
             <% end %>
           <% end %>
         <% end %>

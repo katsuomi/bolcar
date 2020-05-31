@@ -10,6 +10,16 @@
     <% end %>
   </div>
 <% end %>
+<% if current_instructor && current_instructor.not_reviewed? %>
+  <div class="profile-alert">
+    <%= link_to "過去のレビューが残っています", meetings_path %>
+  </div>
+<% end %>
+<% if current_student && current_student.not_reviewed? %>
+  <div class="profile-alert">
+    <%= link_to "過去のレビューが残っています", meetings_path %>
+  </div>
+<% end %>
 <div id="close-menu">
 </div>
 <div id="menu">

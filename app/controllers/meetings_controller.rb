@@ -6,11 +6,11 @@ class MeetingsController < ApplicationController
     if current_student
       schedules = current_student.reservations.map{|r| r.schedule }
       @schedules = available_schedule(schedules)
-      @meetings = @schedules.select{|s| s.meeting }.map{|s| s.meeting }
+      @meetings = @schedules.select{|s| s.meeting }.map{|s| s.meeting }.select{|m| !m.student_reviewed(current_student.id)}
     else
       schedules = current_instructor.schedules
       @schedules = available_schedule(schedules)
-      @meetings = @schedules.select{|s| s.meeting }.map{|s| s.meeting }
+      @meetings = @schedules.select{|s| s.meeting }.map{|s| s.meeting }.select{|m| !m.instructor_reviewed(current_instructor.id)}
     end
   end
 

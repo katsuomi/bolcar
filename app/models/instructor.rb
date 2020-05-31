@@ -16,4 +16,13 @@ class Instructor < ApplicationRecord
 
   scope :active, -> {where.not(name: nil)}
 
+  def meetings
+    self.schedules.select{|s| s.meeting }.map{|s| s.meeting}
+  end
+
+  def not_reviewed?
+    meetings = self.meetings.select{|m| m.schedule.date < Date.today || (m.schedule.date == Date.today && m.schedule.start_time < Time.current) }
+    return meetings.select{|m| m.reviews.find{|r| r.instructor_id == self.id } }.count != meetings.count
+  end
+
 end

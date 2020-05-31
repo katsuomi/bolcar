@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
     if resource.class == Student
       instructors_path
     elsif resource.class == Instructor
-      new_schedule_path
+      schedules_path
     end
   end
 
@@ -16,6 +16,14 @@ class ApplicationController < ActionController::Base
       authenticate_student!
       authenticate_instructor!
     end
+  end
+
+  def redirect_if_not_reviewed
+    if current_student && current_student.not_reviewed?
+      redirect_to meetings_path, alert: "過去のレビューが残っています"
+    elsif current_instructor && current_instructor.not_reviewed?
+      redirect_to meetings_path, alert: "過去のレビューが残っています"
+    end    
   end
 
   def available_schedule(schedules)

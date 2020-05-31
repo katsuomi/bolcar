@@ -7,10 +7,16 @@
   <% @meetings.each do |meeting| %>
     <%= render meeting %>
     <%= link_to "トークルーム", meeting, class: "messages-link" %>
+    <% if current_student && !meeting.student_reviewed(current_student.id) %>
+      <%= link_to "レビュー", new_meeting_review_path(meeting), class: "messages-link" %>
+    <% end %>
+    <% if current_instructor && !meeting.instructor_reviewed(current_instructor.id) %>
+      <%= link_to "レビュー", new_meeting_review_path(meeting), class: "messages-link" %>
+    <% end %>
   <% end %>
 
   <% if @meetings.empty? %>
-    <p class="align-center">現在、面談情報はありません。予約済みの場合はフォームの送信をお待ちください。</p>
+    <p class="align-center">現在、面談情報はありません。</p>
   <% end %>
 
 </div>

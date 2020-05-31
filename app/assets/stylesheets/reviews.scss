@@ -1,0 +1,56 @@
+// Place all the styles related to the reviews controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.review-radios{
+  width: 60%;
+  margin: 0 auto;
+}
+.review-radio{
+  margin: 20px auto;
+}
+.radio-input{
+  display: none;
+}
+.radio-input + label{
+  padding-left: 20px;
+  position:relative;
+  margin-right: 20px;
+  font-size: 20px;
+}
+.radio-input + label::before{
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: -20px;
+  width: 15px;
+  height: 15px;
+  border: 1px solid #999;
+  border-radius: 50%;
+}
+.radio-input:checked + label{
+  color: #49669f;
+}
+.radio-input:checked + label::after{
+  content: "";
+  display: block;
+  position: absolute;
+  top: 3px;
+  left: -17px;
+  width: 11px;
+  height: 11px;
+  background: #49669f;
+  border-radius: 50%;
+}
+
+.review-text{
+  margin-top: 50px;
+  text-align: center;
+  textarea{
+    font-size: 14px;
+    padding: 10px;
+    width: 80%;
+    border-radius: 5px;
+    border: none;
+  }
+}

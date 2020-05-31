@@ -63,10 +63,16 @@
   .group-time{
     color: #fff;
     background-color: #d76050;
+    a{
+      background-color: inherit;
+    }
   }
   .personal-time{
     color: #fff;
     background-color: #4fab4d;
+    a{
+      background-color: inherit;
+    }
   }
   .reserved-time{
     color: #fff;

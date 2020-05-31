@@ -1,6 +1,7 @@
 <%= @student.name %>さん
 
 <%= @schedule.instructor.name %>さんが面談情報を送信しました
-ご確認ください
 
-<%= link_to "ボルキャリにログイン", new_student_session_url %>
+下記のリンクからご確認ください
+
+<%= meetings_url %>

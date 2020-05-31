@@ -32,7 +32,9 @@ Rails.application.routes.draw do
   end
 
   resources :reservations
+
   resources :meetings do
+    resources :reviews, only: [:new, :create, :index]
     resources :messages
   end
 

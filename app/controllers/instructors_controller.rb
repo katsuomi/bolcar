@@ -10,7 +10,7 @@ class InstructorsController < UsersController
       redirect_to edit_instructor_registration_path
     end
     @instructor = Instructor.find(params[:id])
-    @schedules = @instructor.schedules.order(:date, :start_time)
+    @schedules = @instructor.schedules.after_today
     @dates = @schedules.map{|s| s.date }.uniq
   end
 

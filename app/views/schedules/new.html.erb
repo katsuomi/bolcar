@@ -16,7 +16,7 @@
     <%= f.date_select :date, {use_month_numbers: true} %>
 
     <%= f.label :start_time %>
-    <%= f.time_select :start_time, {minute_step: 30} %>
+    <%= f.time_select :start_time, {minute_step: 30, start_hour: 9} %>
   　<%= "から 30分間" %>
 
     <div class="signup-actions">
@@ -25,6 +25,6 @@
 
   <% end %>
   <div class="link-wrapper">
-    <%= link_to "登録したシフトの確認", schedules_path %> 
+    <%= link_to "登録したシフトの確認", schedules_path %>
   </div>
 </div>

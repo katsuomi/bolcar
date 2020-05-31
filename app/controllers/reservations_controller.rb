@@ -1,12 +1,12 @@
 class ReservationsController < ApplicationController
   before_action :authenticate_student!
   before_action :redirect_to_profile_edit, except: :index
+  before_action :redirect_if_not_reviewed, only: [:create]
 
   def index
     @reservations = Reservation.my_reservation(current_student.id)
-    schedules = @reservations.map{|r| r.schedule }
-    @schedules = available_schedule(schedules)
-    @dates = @schedules.map{|s| s.date }.uniq
+    @schedules = @reservations.reject{|r| r.schedule.date < Date.today }.map{|r| r.schedule}
+    @dates = @schedules.map{|s| s.date }.uniq.sort
   end
 
   def personal
