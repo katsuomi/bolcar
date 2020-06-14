@@ -15,7 +15,7 @@ class Meeting < ApplicationRecord
   end
 
   def finished?
-    self.schedule.date < Date.today || (self.schedule.date == Date.today && self.schedule.start_time.strftime("%-H%M").to_i < Time.current.strftime("%-H%M").to_i + 30)
+    self.schedule.date < Date.today || (self.schedule.date == Date.today && self.schedule.compare_start_time(30))
   end
 
   def instructor
@@ -32,7 +32,7 @@ class Meeting < ApplicationRecord
 
   private
   def check_start_time
-    if Schedule.find(schedule_id).date == Date.today && Schedule.find(schedule_id).start_time.strftime("%H%M") < Time.current.strftime("%H%M")
+    if Schedule.find(schedule_id).later_than_current_date
       errors.add(:base, "この予約はすでに無効です")
     end
   end

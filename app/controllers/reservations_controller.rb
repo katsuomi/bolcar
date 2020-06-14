@@ -6,7 +6,7 @@ class ReservationsController < ApplicationController
   def index
     @reservations = Reservation.my_reservation(current_student.id)
     @schedules = @reservations.reject{|r| r.schedule.date < Date.today }.map{|r| r.schedule}
-    @dates = @schedules.map{|s| s.date }.uniq.sort
+    @dates = uniq_dates(@schedules)
   end
 
   def personal
@@ -35,13 +35,7 @@ class ReservationsController < ApplicationController
 
   def create
     @schedule = Schedule.find(params[:schedule_id])
-    case params[:course]
-      when "personal"
-        max = 1
-      when "group"
-        max = 5
-    end
-    if @schedule.available?(max)
+    if @schedule.available?(params[:course])
       @reservation = @schedule.reservations.build(
                       student_id: current_student.id,
                       course: params[:course]
@@ -58,12 +52,6 @@ class ReservationsController < ApplicationController
   end
 
   private
-  def redirect_to_profile_edit
-    if current_student.name == nil
-      redirect_to edit_student_registration_path, alert: "プロフィール登録をしてください"
-    end
-  end
-
   def redirect_to_schedule(reservation)
     redirect_to instructor_path(reservation.schedule.instructor), alert: "予約の締め切り時刻を過ぎています"
   end

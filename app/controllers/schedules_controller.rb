@@ -1,10 +1,11 @@
 class SchedulesController < ApplicationController
   before_action :authenticate_instructor!, except: [:show, :courses]
   before_action :redirect_if_not_reviewed, only: [:create]
+  before_action :redirect_to_profile_edit, only: [:create]
 
   def index
     @schedules = current_instructor.schedules.after_today
-    @dates = @schedules.map{|s| s.date }.uniq
+    @dates = uniq_dates(@schedules)
   end
 
   def show

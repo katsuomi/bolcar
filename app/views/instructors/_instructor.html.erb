@@ -28,7 +28,7 @@
     <div class="start-times">
       <% instructor.schedules.each do |s| %>
         <% if s.date == @date %>
-          <% if s.reservations.find{|r| r.course == "group" } && s.available?(5) %>
+          <% if s.reservations.find{|r| r.course == "group" } && s.available?("group") %>
             <span class="group-time">
               <%= s.start_time.strftime("%-H:%M") %>
             </span>

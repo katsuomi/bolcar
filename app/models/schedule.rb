@@ -13,8 +13,22 @@ class Schedule < ApplicationRecord
   scope :today, -> {where(date: Date.today)}
   scope :tomorrow, -> {where(date: Date.tomorrow)}
 
-  def available?(max)
+  def available?(course)
+    case course
+      when "personal"
+        max = 1
+      when "group"
+        max = 5
+    end
     self.reservations.count < max
+  end
+
+  def compare_start_time(dif)
+    self.start_time.strftime("%-H%M").to_i < Time.current.strftime("%-H%M").to_i + dif
+  end
+
+  def later_than_current_date
+    self.date < Date.today || self.date == Date.today && self.compare_start_time(0)
   end
 
   private

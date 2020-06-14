@@ -79,8 +79,6 @@ ActiveRecord::Schema.define(version: 2020_05_30_104834) do
 
   create_table "reservations", force: :cascade do |t|
     t.string "course", null: false
-    t.string "servise_id"
-    t.string "servise_pwd"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "student_id"

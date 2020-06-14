@@ -1,23 +1,28 @@
 class InstructorsController < UsersController
   def index
-    today_instructors = Schedule.today.map{|s| s.instructor_id }.uniq
-    @instructors = Instructor.active.find(today_instructors)
+    today_instructor_ids = Schedule.today.map{|s| s.instructor_id }.uniq
+    @instructors = Instructor.active.find(today_instructor_ids)
     @date = Date.today
   end
 
   def show
-    if current_instructor && !current_instructor.name
-      redirect_to edit_instructor_registration_path
-    end
+    redirect_to_profile
     @instructor = Instructor.find(params[:id])
     @schedules = @instructor.schedules.after_today
-    @dates = @schedules.map{|s| s.date }.uniq
+    @dates = uniq_dates(@schedules)
   end
 
   def tomorrow
-    tomorrow_instructors = Schedule.tomorrow.map{|s| s.instructor_id }.uniq
-    @instructors = Instructor.active.find(tomorrow_instructors)
+    tomorrow_instructor_ids = Schedule.tomorrow.map{|s| s.instructor_id }.uniq
+    @instructors = Instructor.active.find(tomorrow_instructor_ids)
     @date = Date.tomorrow
     render "index"
+  end
+
+  private
+  def redirect_to_profile
+    if current_instructor && !current_instructor.name
+      redirect_to edit_instructor_registration_path
+    end
   end
 end
