@@ -42,6 +42,8 @@ ja:
       review:
         content: 本文
         safety: YESかNO
+      contact:
+        content: お問い合わせ内容
 
 
   date:

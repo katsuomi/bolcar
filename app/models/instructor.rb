@@ -21,7 +21,7 @@ class Instructor < ApplicationRecord
   end
 
   def not_reviewed?
-    meetings = self.meetings.select{|m| m.schedule.later_than_current_date }
+    meetings = self.meetings.select{|m| m.schedule.previous? }
     return meetings.select{|m| m.reviews.find{|r| r.instructor_id == self.id } }.count != meetings.count
   end
 

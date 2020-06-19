@@ -11,6 +11,14 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def redirect_to_top(notice)
+    if current_student
+      redirect_to instructors_path, notice: notice
+    elsif current_instructor
+      redirect_to schedules_path, notice: notice
+    end
+  end
+
   def authenticate_user!
     if !student_signed_in? && !instructor_signed_in?
       authenticate_student!

@@ -38,6 +38,8 @@ Rails.application.routes.draw do
     resources :messages
   end
 
+  resources :contacts, only: [:new, :create, :index]
+
 
   root "users#sign_up"
   get "/users/sign_in"

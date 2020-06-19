@@ -1,0 +1,8 @@
+<h3>以下のお問い合わせがありました</h3>
+
+<p>お名前: <%= "#{@user.name}さん(#{@status})" %></p>
+
+<p>メールアドレス: <%= @user.email %></p>
+
+<p>お問い合わせ内容</p>
+<%= simple_format(@contact.content) %>

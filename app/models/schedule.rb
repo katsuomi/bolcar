@@ -5,7 +5,7 @@ class Schedule < ApplicationRecord
 
   validates :date, presence: true
   validates :start_time, presence: true, uniqueness: { scope: [:date, :instructor_id], message: "が既存のシフトと重複しています" }
-  validate :date_not_before_today, :check_start_time
+  validate :is_before_deadline
 
   default_scope {order(:date, :start_time)}
 
@@ -27,17 +27,14 @@ class Schedule < ApplicationRecord
     self.start_time.strftime("%-H%M").to_i < Time.current.strftime("%-H%M").to_i + dif
   end
 
-  def later_than_current_date
+  def previous?
     self.date < Date.today || self.date == Date.today && self.compare_start_time(0)
   end
 
   private
-  def date_not_before_today
-    errors.add(:date, "は今日以降のものを選択してください") if date < Date.today
+  def is_before_deadline
+    if date < Date.today || date == Date.today && compare_start_time(300)
+      errors.add(:base, "日時は今から3時間後以降を選択してください")
+    end
   end
-
-  def check_start_time
-    errors.add(:start_time, "は3時間後以降を選択してください") if date == Date.today && start_time < Time.current.since(3.hours)
-  end
-
 end

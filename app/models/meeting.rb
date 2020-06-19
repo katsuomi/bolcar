@@ -32,7 +32,7 @@ class Meeting < ApplicationRecord
 
   private
   def check_start_time
-    if Schedule.find(schedule_id).later_than_current_date
+    if Schedule.find(schedule_id).previous?
       errors.add(:base, "この予約はすでに無効です")
     end
   end

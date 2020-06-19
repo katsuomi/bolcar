@@ -1,0 +1,21 @@
+<div class="back-gray">
+  <h3>お問い合わせ</h3>
+  <%= form_for(@contact) do |f| %>
+  <% if @contact.errors.any? %>
+    <div id="error_explanation">
+      <ul>
+        <% @contact.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="review-text">
+    <%= f.label :content %>
+    <%= f.text_area :content, rows: 10 %>
+  </div>
+  <div class="signup-actions">
+    <%= f.submit "送信" %>
+  </div>
+  <% end %>
+</div>
