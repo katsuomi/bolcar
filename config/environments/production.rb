@@ -48,18 +48,32 @@ Rails.application.configure do
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   # config.force_ssl = true
-  config.action_mailer.default_url_options = { host: 'bolcar-test.herokuapp.com' }
+
+  # config.action_mailer.default_url_options = { host: 'bolcar-test.herokuapp.com' }
+  # config.action_mailer.delivery_method = :smtp
+  # config.action_mailer.perform_deliveries = true
+  # config.action_mailer.smtp_settings = {
+  #   :user_name => ENV['SENDGRID_USERNAME'],
+  #   :password => ENV['SENDGRID_PASSWORD'],
+  #   :domain => 'herokuapp.com',
+  #   :address => 'smtp.sendgrid.net',
+  #   :port => 587,
+  #   :authentication => :plain,
+  #   :enable_starttls_auto => true
+  # }
+
+  config.action_mailer.default_url_options = { host: '54.168.18.117' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
   config.action_mailer.smtp_settings = {
-    :user_name => ENV['SENDGRID_USERNAME'],
-    :password => ENV['SENDGRID_PASSWORD'],
-    :domain => 'herokuapp.com',
-    :address => 'smtp.sendgrid.net',
+    :address => "smtp.gmail.com",
     :port => 587,
+    :user_name => ENV["ADDRESS"],
+    :password => ENV["PASSWORD"],
     :authentication => :plain,
     :enable_starttls_auto => true
   }
+
 
   # Use the lowest log level to ensure availability of diagnostic information
   # when problems arise.
