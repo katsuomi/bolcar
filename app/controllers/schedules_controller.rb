@@ -1,5 +1,6 @@
 class SchedulesController < ApplicationController
   before_action :authenticate_instructor!, except: [:show, :courses]
+  before_action :authenticate_student!, only: [:show, :courses]
   before_action :redirect_if_not_reviewed, only: [:create]
   before_action :redirect_to_profile_edit, only: [:create]
 

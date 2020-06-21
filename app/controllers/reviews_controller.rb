@@ -10,6 +10,7 @@ class ReviewsController < ApplicationController
 
   def new
     @meeting = Meeting.find(params[:meeting_id])
+    redirect_to_meetings
     if !@meeting.finished?
       redirect_to meetings_path, alert: "この面談はまだ終了していません"
     end
@@ -27,11 +28,18 @@ class ReviewsController < ApplicationController
     end
   end
 
+  private
   def review_params
     if current_student
       params.require(:review).permit(:content, :safety).merge(student_id: current_student.id)
     else
       params.require(:review).permit(:content, :safety).merge(instructor_id: current_instructor.id)
+    end
+  end
+
+  def redirect_to_meetings
+    if @meeting.instructor != current_instructor && !@meeting.students.find{|s| s == current_student}
+      redirect_to meetings_path, alert: "不正なアクセスです"
     end
   end
 

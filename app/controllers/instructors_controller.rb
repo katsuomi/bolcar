@@ -1,4 +1,5 @@
 class InstructorsController < UsersController
+
   def index
     today_instructor_ids = Schedule.today.map{|s| s.instructor_id }.uniq
     @instructors = Instructor.active.find(today_instructor_ids)
