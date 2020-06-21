@@ -3,4 +3,4 @@
 <p><%= @schedule.instructor.name %>さんが面談情報を送信しました</p>
 <p>ご確認ください</p>
 
-<%= link_to "こちらから確認", meetings_url %>
+<%= link_to "こちらから確認", meetings_url(protocol: 'https', host: 'www.bolcar-test.xyz') %>
