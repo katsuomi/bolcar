@@ -47,7 +47,7 @@ Rails.application.configure do
   # config.action_cable.allowed_request_origins = [ 'http://example.com', /http:\/\/example.*/ ]
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
-  # config.force_ssl = true
+  config.force_ssl = true
 
   # config.action_mailer.default_url_options = { host: 'bolcar-test.herokuapp.com' }
   # config.action_mailer.delivery_method = :smtp
@@ -62,7 +62,7 @@ Rails.application.configure do
   #   :enable_starttls_auto => true
   # }
 
-  config.action_mailer.default_url_options = { host: 'https://www.bolcar-test.xyz' }
+  config.action_mailer.default_url_options = { protocol: 'https', host: 'www.bolcar-test.xyz' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
   config.action_mailer.smtp_settings = {
