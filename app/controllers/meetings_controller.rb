@@ -4,9 +4,9 @@ class MeetingsController < ApplicationController
 
   def index
     if current_student
-      @meetings = current_student.meetings.select{|m| !m.student_reviewed(current_student.id)}
+      @meetings = current_student.meetings.select{|m| !m.reviewed(current_student)}
     else
-      @meetings = current_instructor.meetings.select{|m| !m.instructor_reviewed(current_instructor.id)}
+      @meetings = current_instructor.meetings.select{|m| !m.reviewed(current_instructor)}
     end
   end
 

@@ -6,12 +6,12 @@ class Meeting < ApplicationRecord
   validates :service_name, presence: true
   validate :check_start_time
 
-  def instructor_reviewed(id)
-    self.reviews.find{|r| r.instructor_id == id}
-  end
-
-  def student_reviewed(id)
-    self.reviews.find{|r| r.student_id == id}
+  def reviewed(user)
+    if user.class == Instructor
+      self.reviews.find{|r| r.instructor_id == user.id}
+    elsif user.class == Student
+      self.reviews.find{|r| r.student_id == user.id}
+    end
   end
 
   def finished?

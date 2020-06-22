@@ -1,5 +1,5 @@
 <%= render "application/header" %>
-<div class="user-show">
+<div class="back-gray">
 
   <%= render @schedule.instructor %>
 
@@ -14,8 +14,8 @@
     </button>
   </div>
 
-  <div class="bottom-link">
-    <%= link_to "コースについて詳しくみる", courses_schedules_path %>
+  <div class="bottom-link-wrapper">
+    <%= link_to "コースについて詳しくみる", courses_schedules_path, class: "bottom-link" %>
   </div>
 
 </div>

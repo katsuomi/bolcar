@@ -6,15 +6,20 @@
   <%= render "schedules", schedules: @schedules, dates: @dates, type: "private" %>
 
   <div class="box-wrapper">
-    <div class="green-box"></div>
-    <p>個人面談</p>
+    <div>
+      <div class="green-box"></div>
+      <span>個人面談</span>
+    </div>
 
-    <div class="red-box"></div>
-    <p>グループ面談</p>
+    <div>
+      <div class="red-box"></div>
+      <span>グループ面談</span>
+    </div>
 
-    <div class="blue-box"></div>
-    <p>フォーム未回答</p>
-
+    <div>
+      <div class="blue-box"></div>
+      <span>フォーム未回答</span>
+    </div>
   </div>
 
   <div class="link-wrapper">

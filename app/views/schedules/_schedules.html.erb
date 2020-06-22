@@ -18,15 +18,11 @@
                   %>
               <% end %>
             <% else %>
-              <% if s.reservations.find{|r| r.course == "personal" } %>
-                <span class="personal-time">
-                  <%= s.start_time.strftime("%H:%M") %>
-                </span>
-              <% elsif s.reservations.find{|r| r.course == "group" } %>
+              <% if s.reservations.find{|r| r.course == "group" } %>
                 <span class="group-time">
                   <%= link_to_if current_student, s.start_time.strftime("%H:%M"), group_schedule_reservations_path(s) %>
                 </span>
-              <% else %>
+              <% elsif s.reservations.size == 0 %>
                 <% if current_student %>
                   <%= link_to s.start_time.strftime("%H:%M"), schedule_path(s) %>
                 <% else %>

@@ -1,5 +1,5 @@
-<div class="back-gray">
-  <h3>お問い合わせ</h3>
+<div class="back-gray-without-header">
+  <h2>お問い合わせ</h2>
   <%= form_for(@contact) do |f| %>
   <% if @contact.errors.any? %>
     <div id="error_explanation">
@@ -10,11 +10,12 @@
       </ul>
     </div>
   <% end %>
-  <div class="review-text">
+  <div class="contact-text">
     <%= f.label :content %>
     <%= f.text_area :content, rows: 10 %>
   </div>
-  <div class="signup-actions">
+  <p class="align-center">ご登録のメールアドレスに数日以内に返信させていただきます</p>
+  <div class="form-actions">
     <%= f.submit "送信" %>
   </div>
   <% end %>

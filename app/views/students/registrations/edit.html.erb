@@ -15,17 +15,17 @@
       <%= f.file_field :icon, accept: 'image/*', class: "hidden-file" %>
     </div>
   <% end %>
-  <div class="signup-field edit-field">
+  <div class="form-field edit-field">
     <%= f.label :name, "お名前(フルネーム)" %><br />
     <%= f.text_field :name %>
   </div>
 
-  <div class="signup-field edit-field">
+  <div class="form-field edit-field">
     <%= f.label :school %><br />
     <%= f.text_field :school %>
   </div>
 
-  <div class="signup-field edit-field">
+  <div class="form-field edit-field">
     <%= f.label :faculty %><br />
     <%= f.text_field :faculty %>
   </div>
@@ -37,7 +37,7 @@
     </label>
   </div>
 
-  <div class="signup-field edit-field">
+  <div class="form-field edit-field">
     <%= f.label :graduation_year %><br />
     <%= f.select :graduation_year,
       [
@@ -50,13 +50,13 @@
       {include_blank: "選択してください"}, class: "age-select" %>
   </div>
 
-  <div class="signup-field edit-field">
+  <div class="form-field edit-field">
     <%= f.label :profile %><br />
     <%= f.text_area :profile, rows: 10 %>
   </div>
 
 
-  <div class="signup-actions">
+  <div class="form-actions">
     <%= f.submit "保存する" %>
   </div>
 <% end %>

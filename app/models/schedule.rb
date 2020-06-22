@@ -13,6 +13,10 @@ class Schedule < ApplicationRecord
   scope :today, -> {where(date: Date.today)}
   scope :tomorrow, -> {where(date: Date.tomorrow)}
 
+  def self.without_personal_reservation
+    after_today.reject{|s| s.reservations&.first&.course == "personal" }
+  end
+
   def available?(course)
     case course
       when "personal"

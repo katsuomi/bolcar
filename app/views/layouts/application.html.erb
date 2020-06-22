@@ -10,8 +10,19 @@
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+    <% if notice.present? %>
+      <div class="notice">
+        <p><%= notice.html_safe %></p>
+        <button id="notice-close">
+          もどる
+        </button>
+      </div>
+    <% end %>
+    <% if alert.present? %>
+      <div class="alert" id="alert-close">
+        <%= alert %>
+      </div>
+    <% end %>
     <%= yield %>
   </body>
 </html>

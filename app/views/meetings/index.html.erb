@@ -7,10 +7,10 @@
   <% @meetings.each do |meeting| %>
     <%= render meeting %>
     <%= link_to "トークルーム", meeting, class: "messages-link" %>
-    <% if current_student && !meeting.student_reviewed(current_student.id) %>
+    <% if current_student && !meeting.reviewed(current_student) %>
       <%= link_to "レビュー", new_meeting_review_path(meeting), class: "messages-link" %>
     <% end %>
-    <% if current_instructor && !meeting.instructor_reviewed(current_instructor.id) %>
+    <% if current_instructor && !meeting.reviewed(current_instructor) %>
       <%= link_to "レビュー", new_meeting_review_path(meeting), class: "messages-link" %>
     <% end %>
   <% end %>

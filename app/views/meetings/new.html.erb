@@ -1,4 +1,4 @@
-<div class="back-gray">
+<div class="back-gray-without-header">
   <p class="meeting-form-introduction">
     <%= link_to "#{@student.name}さん", @student %>から面談の申込がありました<br/>
     以下のフォームに回答してください
@@ -24,22 +24,22 @@
         </ul>
       </div>
     <% end %>
-    <div class="signup-field meeting-field">
+    <div class="form-field meeting-field">
       <%= f.label :service_name %><br />
       <%= f.text_field :service_name %>
     </div>
 
-    <div class="signup-field meeting-field">
+    <div class="form-field meeting-field">
       <%= f.label :service_id %><br />
       <%= f.text_field :service_id %>
     </div>
 
-    <div class="signup-field meeting-field">
+    <div class="form-field meeting-field">
       <%= f.label :service_pwd %><br />
       <%= f.text_field :service_pwd %>
     </div>
 
-    <div class="signup-actions">
+    <div class="form-actions">
       <%= f.submit "フォームを送信" %>
     </div>
 

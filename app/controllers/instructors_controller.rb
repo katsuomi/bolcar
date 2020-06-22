@@ -9,7 +9,7 @@ class InstructorsController < UsersController
   def show
     redirect_to_profile
     @instructor = Instructor.find(params[:id])
-    @schedules = @instructor.schedules.after_today
+    @schedules = @instructor.schedules.without_personal_reservation
     @dates = uniq_dates(@schedules)
   end
 

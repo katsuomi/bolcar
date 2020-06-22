@@ -42,6 +42,18 @@ document.addEventListener('turbolinks:load', function(){
       return html;
     }
 
+    $('#notice-close').on('click', function(){
+      $('.notice').fadeOut()
+      return false
+    })
+
+    $('#alert-close').on('click', function(){
+      $('.alert').fadeOut()
+      return false
+    })
+
+    $('.alert').hide().fadeIn("slow")
+
     $(document).on('change', '.hidden-file', function () {
       var file = this.files[0];
       var reader = new FileReader();

@@ -153,14 +153,14 @@
   border-radius: 5px;
   padding: 15px;
   margin: 15px;
-  h3{
-    margin: 0 0 15px 0;
-    font-size: 18px;
-    text-align: left;
-    font-weight: normal;
-  }
   p{
     font-size: 14px;
+  }
+  .course-name{
+    margin: 0 auto 15px auto;
+    font-size: 18px;
+    text-align: center;
+    font-weight: normal;
   }
 }
 
@@ -169,10 +169,10 @@
   border-radius: 5px;
   padding: 15px;
   margin: 15px;
-  h3{
-    margin: 0 0 15px 0;
+  .course-name{
+    margin: 0 auto 15px auto;
     font-size: 18px;
-    text-align: left;
+    text-align: center;
     font-weight: normal;
   }
   p{
@@ -183,26 +183,37 @@
 .box-wrapper{
   width: 85%;
   margin: 30px auto;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-around;
   .green-box{
+    display: block;
+    margin: 0 auto;
     width: 60px;
     height: 30px;
     border-radius: 5px;
     background-color: #4fab4d;
   }
   .red-box{
+    display: block;
+    margin: 0 auto;
     width: 60px;
     height: 30px;
     border-radius: 5px;
     background-color: #d76050;
   }
   .blue-box{
+    display: block;
+    margin: 0 auto;
     width: 60px;
     height: 30px;
     border-radius: 5px;
     background-color: #49669f;
   }
-  p{
+  span{
+    display: inline-block;
+    margin: 10px;
     font-size: 14px;
-    margin: 10px 0;
+    text-align: center;
   }
 }

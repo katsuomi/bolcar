@@ -1,4 +1,4 @@
-<div class="back-gray">
+<div class="back-gray-without-header">
   <h3>面談は適切に行われましたか？</h3>
   <%= form_for [@meeting, @review] do |f| %>
   <% if @review.errors.any? %>
@@ -22,7 +22,7 @@
     <%= f.text_area :content, placeholder: "相手の良かったところ、直した方がいいところ、感謝の気持ちなどを伝えましょう。
 適切に行われなかった場合は理由を教えてください。", rows: 10 %>
   </div>
-  <div class="signup-actions">
+  <div class="form-actions">
     <%= f.submit "送信" %>
   </div>
   <% end %>

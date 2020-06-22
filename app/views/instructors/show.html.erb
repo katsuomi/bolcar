@@ -1,25 +1,24 @@
 <%= render "application/header" %>
-<div class="user-show">
+
+<div class="back-gray">
 
   <%= render @instructor %>
 
-
   <% if current_student %>
-    <h3>予約可能日時</h3>
+    <h4>予約可能日時</h4>
     <%= render "schedules/schedules", schedules: @schedules, dates: @dates, type: "public" %>
 
     <div class="box-wrapper">
-      <div class="green-box"></div>
-      <p>個人面談ですでに埋まっています</p>
-
-      <div class="red-box"></div>
-      <p>グループが作られています</p>
-      <p>上限は5人です</p>
+      <div>
+        <div class="red-box"></div>
+        <span>グループ面談</span>
+      </div>
     </div>
   <% end %>
 
-  <div class="link-wrapper">
-    <%= link_to_if @instructor.id == current_instructor&.id, "マイページを編集", edit_instructor_registration_path do %>
-    <% end %>
-  </div>
+  <% if @instructor.id == current_instructor&.id %>
+    <div class="link-wrapper">
+      <%= link_to "マイページを編集", edit_instructor_registration_path  %>
+    </div>
+  <% end %>
 </div>

@@ -3,12 +3,12 @@
 <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
   <%= render "students/shared/error_messages", resource: resource %>
 
-  <div class="signup-field">
+  <div class="form-field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
   </div>
 
-  <div class="signup-actions">
+  <div class="form-actions">
     <%= f.submit "メールを再送信する" %>
   </div>
 <% end %>

@@ -1,5 +1,5 @@
 <%= render "application/header" %>
-<div class="user-show">
+<div class="back-gray">
 
   <%= render @reservation.schedule.instructor %>
 
@@ -24,7 +24,7 @@
       </h3>
       <p>※グループの参加者があなた一人の場合、個人面談に切り替わります</p>
     <% end %>
-    <div class="signup-actions">
+    <div class="form-actions">
       <%= link_to "この面談を予約する",
           {controller: "reservations", action: "create", course: @reservation.course},
           method: :post %>

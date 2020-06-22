@@ -1,3 +1,20 @@
 // Place all the styles related to the contacts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.contact-text{
+  margin-top: 50px;
+  text-align: center;
+  label{
+    display: block;
+    width: 80%;
+    margin: 10px auto;
+    text-align: left;
+  }
+  textarea{
+    font-size: 14px;
+    padding: 10px;
+    width: 80%;
+    border-radius: 5px;
+    border: none;
+  }
+}

@@ -41,8 +41,8 @@ li{
 }
 
 select {
-    -webkit-appearance: button;
-    appearance: button;
+  -webkit-appearance: button;
+  appearance: button;
 }
 
 input[type="submit"],
@@ -65,6 +65,46 @@ input[type="button"]::focus {
   outline-offset: -2px;
 }
 
+.notice{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 10000;
+  background-color: #f2f2f2;
+}
+
+.notice p{
+  padding-top: 40vh;
+  font-size: 18px;
+  text-align: center;
+}
+
+.notice button{
+  display: block;
+  width: 50%;
+  margin: 20px auto 20px auto;
+  background-color: #f2f2f2;
+  font-size: 16px;
+  text-align: center;
+  border: 1px solid #373737;
+  border-radius: 5px;
+  padding: 10px 0;
+}
+
+.alert{
+  position: fixed;
+  bottom: 20px;
+  z-index: 10000;
+  left: 5vw;
+  width: 80vw;
+  background-color: rgba(55, 55, 55, 0.8);
+  color: #fff;
+  padding: 5vw;
+  border-radius: 5px;
+}
+
 header{
   padding: 15px;
   border-bottom: 2px solid #f2f2f2;
@@ -85,6 +125,18 @@ header img{
   display: block;
 }
 
+.menu-wrapper{
+  position: relative;
+}
+
+.notification{
+  color: #d76050;
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  z-index: 10;
+}
+
 #menu {
   position: absolute;
   top: 0;
@@ -94,7 +146,7 @@ header img{
 
 #menu.open {
   right: 0;
-  height: 100vh;
+  height: 100%;
   width: 100%;
   display: flex;
   flex-direction: row-reverse;
@@ -121,7 +173,6 @@ header img{
 
 .menu-content a{
   display: block;
-  color: #373737;
   margin: 20px;
 }
 
@@ -137,25 +188,35 @@ header img{
 
 .back-gray{
   background-color: #f2f2f2;
+  min-height: calc(100vh - 60px);
+  overflow-x: hidden;
+}
+
+.back-gray-without-header{
+  background-color: #f2f2f2;
   min-height: 100vh;
   overflow-x: hidden;
 }
 
-.back-gray h2{
+.back-gray-without-header h2, .back-gray-without-header h3{
   text-align: center;
-  padding: 30px 0;
-  margin: 0 auto;
+  margin: 30px auto;
 }
 
-.back-gray h3{
+.back-gray h2, .back-gray h3{
   text-align: center;
-  padding: 30px 0;
-  margin: 0 auto;
+  margin: 30px auto;
+}
+
+.back-gray h4{
+  text-align: center;
+  margin: 20px auto;
+  font-size: 18px;
 }
 
 .align-center{
   width: 80%;
   margin: 0 auto;
   font-size: 14px;
-  padding-bottom: 20px;
+  margin-bottom: 20px;
 }

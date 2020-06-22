@@ -1,10 +1,12 @@
 <%= render "application/header" %>
-<div class="user-show">
+
+<div class="back-gray">
 
   <%= render @student %>
 
-  <div class="link-wrapper">
-    <%= link_to_if @student.id == current_student&.id, "マイページを編集", edit_student_registration_path do %>
-    <% end %>
-  </div>
+  <% if @student.id == current_student&.id %>
+    <div class="link-wrapper">
+      <%= link_to "マイページを編集", edit_student_registration_path  %>
+    </div>
+  <% end %>
 </div>

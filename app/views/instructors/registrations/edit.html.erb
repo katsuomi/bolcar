@@ -15,19 +15,19 @@
       <%= f.file_field :icon, accept: 'image/*', class: "hidden-file" %>
     </div>
   <% end %>
-  <div class="signup-field edit-field">
+  <div class="form-field edit-field">
     <%= f.label :name, "お名前(フルネーム)" %><br />
     <%= f.text_field :name %>
   </div>
 
-  <div class="signup-field edit-field">
+  <div class="form-field edit-field">
     <%= f.label :age %><br />
     <%= f.select :age,
       ["10代", "20代", "30代", "40代", "50代", "60代以上"],
       {include_blank: "選択してください"}, class: "age-select" %>
   </div>
 
-  <div class="signup-field edit-field">
+  <div class="form-field edit-field">
     <%= f.label :company %><br />
     <%= f.text_field :company %>
   </div>
@@ -39,30 +39,30 @@
     </label>
   </div>
 
-  <div class="signup-field edit-field">
+  <div class="form-field edit-field">
     <%= f.label :industry %><br />
     <%= f.text_field :industry, placeholder: "金融・医療・製造業" %>
   </div>
 
-  <div class="signup-field edit-field">
+  <div class="form-field edit-field">
     <%= f.label :occupation %><br />
     <%= f.text_field :occupation, placeholder: "事務・経理・エンジニア" %>
   </div>
 
-  <div class="signup-field edit-field">
+  <div class="form-field edit-field">
     <%= f.label :status, "あなたは..." %><br />
     <%= f.select :status,
       ["内定者", "社会人"],
       {include_blank: "選択してください"}, class: "age-select" %>
   </div>
 
-  <div class="signup-field edit-field">
+  <div class="form-field edit-field">
     <%= f.label :profile %><br />
     <%= f.text_area :profile, rows: 10 %>
   </div>
 
 
-  <div class="signup-actions">
+  <div class="form-actions">
     <%= f.submit "保存する" %>
   </div>
 <% end %>

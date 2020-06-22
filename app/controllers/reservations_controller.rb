@@ -42,7 +42,7 @@ class ReservationsController < ApplicationController
                     )
       if @reservation.save
         ReservationMailer.send_reservation_notification(@schedule.instructor).deliver_later if !@schedule.meeting
-        redirect_to instructors_path, notice: "予約が完了しました"
+        redirect_to instructors_path, notice: "予約が完了しました<br>講師からのメールをお待ちください"
       else
         redirect_to instructors_path, alert: "指定した日時はすでに予約済みです"
       end
