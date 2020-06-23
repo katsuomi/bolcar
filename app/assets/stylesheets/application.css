@@ -176,6 +176,16 @@ header img{
   margin: 20px;
 }
 
+.menu-content a span{
+  color: #fff;
+  background-color: #d76050;
+  font-size: 14px;
+  font-weight: bold;
+  padding: 2px 8px;
+  border-radius: 5px;
+  float: right;
+}
+
 .profile-alert{
   background-color: #49669f;
   text-align: center;

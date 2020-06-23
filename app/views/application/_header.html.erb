@@ -2,7 +2,7 @@
   <h3>Bolstering Career</h3>
   <div class="menu-wrapper">
     <%= image_tag "menu.png", id: "menu-link" %>
-    <% if meetings_count %>
+    <% if meetings_count != 0 %>
       <span class="notification">●</span>
     <% end %>
   </div>
@@ -22,7 +22,12 @@
     <% if current_student %>
       <%= link_to "講師を探す", instructors_path %>
       <%= link_to "予約中の面談", reservations_path %>
-      <%= link_to "面談情報", meetings_path %>
+      <%= link_to meetings_path do %>
+        面談情報
+        <% if meetings_count != 0 %>
+          <span><%= meetings_count %></span>
+        <% end %>
+      <% end %>
       <%= link_to "マイページ", student_path(current_student) %>
       <%= link_to "お問い合わせ", new_contact_path %>
       <%= link_to "ログアウト", destroy_student_session_path, method: :delete, data: {confirm: "ログアウトしますか？"} %>
@@ -30,7 +35,12 @@
     <% if current_instructor %>
       <%= link_to "シフト登録", new_schedule_path %>
       <%= link_to "シフト確認", schedules_path %>
-      <%= link_to "面談情報", meetings_path %>
+      <%= link_to meetings_path do %>
+        面談情報
+        <% if meetings_count != 0 %>
+          <span><%= meetings_count %></span>
+        <% end %>
+      <% end %>
       <%= link_to "マイページ", instructor_path(current_instructor) %>
       <%= link_to "お問い合わせ", new_contact_path %>
       <%= link_to "ログアウト", destroy_instructor_session_path, method: :delete, data: {confirm: "ログアウトしますか？"} %>

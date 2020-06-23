@@ -6,6 +6,7 @@
 
   <% if current_student %>
     <h4>予約可能日時</h4>
+    <p class="align-center">予約は面談開始時刻の3時間前まで可能です</p>
     <%= render "schedules/schedules", schedules: @schedules, dates: @dates, type: "public" %>
 
     <div class="box-wrapper">
